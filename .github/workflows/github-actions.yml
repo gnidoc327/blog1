@@ -16,4 +16,7 @@ jobs:
       - name: List files in the repository
         run: |
           npm run deploy
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
       - run: echo "🍏 This job's status is ${{ job.status }}."
