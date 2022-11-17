@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import { Layout, Menu } from "antd";
+import { json } from "stream/consumers";
 
 const { Header } = Layout;
 
 function App() {
-  const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState<Date>(new Date());
 
   const timer = setInterval(() => {
     setTime(new Date());
@@ -41,12 +42,14 @@ function App() {
             ]}
           />
         </Header>
-        <Layout.Content style={{ padding: "0 51px" }}>
-          <Routes>
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="/" element={<Home />} />
-          </Routes>
+        <Layout.Content style={{ padding: "0 50px", height: 300 }}>
+          <div className="site-layout-content" style={{}}>
+            <Routes>
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/resume" element={<Resume />} />
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </div>
         </Layout.Content>
       </Router>
     </Layout>
@@ -54,7 +57,20 @@ function App() {
 }
 
 const Home = () => {
-  return <>홈페이지</>;
+  return (
+    <div
+      style={{
+        background: "#fff",
+        height: 200,
+        padding: 24,
+        marginTop: 60,
+        marginBottom: 60,
+        border: 5,
+      }}
+    >
+      홈페이지
+    </div>
+  );
 };
 
 const Resume = () => {
